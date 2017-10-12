@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const TopicSchema = new mongoose.Schema({
     title: String,
-    url: String,
+    url: {type: String, unique: true, index: true, },
     createTime: Number,
     details:[String],
     images: [String]
