@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+//定义数据模型 
 const TopicSchema = new mongoose.Schema({
     title: String,
     url: {type: String, unique: true, index: true, },

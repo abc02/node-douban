@@ -2,10 +2,11 @@ const axios = require('axios')
 const cheerio = require('cheerio')
 
 /**
- * 
+ * 获取当前页码所有租房链接
  * @param {number} start 
  * @return Array
  */
+
 async function fetchSingleDoubanList(start){
     let res = await axios.get(`https://www.douban.com/group/HZhome/discussion?start=${start}`)
     let htmlText = res.data
@@ -24,7 +25,7 @@ async function fetchSingleDoubanList(start){
     return resultList
 }
 /**
- * 
+ * 获取租房链接下租房信息，图片
  * @param {string} url
  * @return  url -> Array
  */

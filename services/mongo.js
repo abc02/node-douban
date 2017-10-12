@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+//链接数据库
 mongoose.connect('mongodb://localhost/rent_crawler', {
     server: { poolSize: 5}
 })
