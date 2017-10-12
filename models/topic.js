@@ -7,6 +7,6 @@ const TopicSchema = new mongoose.Schema({
     details:[String]
 })
 
-const TopicModel = mongoose.model('topic', TopicModel)
+const TopicModel = mongoose.model('topic', TopicSchema)
 
 module.exports = TopicModel
