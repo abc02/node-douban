@@ -10,7 +10,6 @@ const cheerio = require('cheerio')
 async function fetchSingleDoubanList(start){
     let res = await axios.get(`https://www.douban.com/group/HZhome/discussion?start=${start}`)
     let htmlText = res.data
-
     const $ = cheerio.load(htmlText)
     const rs = $('a[title]')
 
@@ -29,7 +28,8 @@ async function fetchSingleDoubanList(start){
  * @param {string} url
  * @return  url -> Array
  */
-async function fetchSingleDoubanTopic(url){
+async function fetchSingleDoubanTopic(results){
+    let { title, url } = results
     let res = await axios.get(url)
     let htmlText = res.data
 
@@ -40,7 +40,7 @@ async function fetchSingleDoubanTopic(url){
     let details = []
     let images = []
     for(let i = 0; i < contentText.length; i++){
-        details.psuh(contentText.eq(i).text())
+        details.push(contentText.eq(i).text())
     }
     for(let j = 0; j < contentImages.length; j++){
         images.push(contentImages.eq(j).attr('src'))
