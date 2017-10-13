@@ -1,17 +1,29 @@
-const Koa = require('koa');
-const app = new Koa();
+const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
-const convert = require('koa-convert')
-const static  = require('koa-static');
+const static = require('koa-static')
+const Router = require('koa-router')
+const Topic = require('./models/topic.js')
+const { fetchSingleDouban, fetchTopicMongDB } = require('./services/index.js')
+
+const app = new Koa()
+const router = new Router()
+
 
 
 app.use(bodyParser())     // 解析body
 app.use(static('./APP'))  //设置静态资源
 
-// response
-app.use(async ctx => {
-  ctx.body = 'Hello World' + ctx.request.header.host;
-});
+router.get('/getlists', async (ctx, next) => {
+  let results = await fetchTopicMongDB()
+  ctx.body = results
+
+})
+
+
+
+app.use(router.routes())
+.use(router.allowedMethods())
+
 
 // error
 app.on('error', err => {

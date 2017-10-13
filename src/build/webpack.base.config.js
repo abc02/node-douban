@@ -39,6 +39,10 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader','sass-loader'],
+      },
 
     ]
   },
@@ -55,9 +59,8 @@ module.exports = {
       jQuery: 'jquery',
     }),
     new HtmlWebpackPlugin({
-      // template: path.join(__dirname, '../javascripts/index/index.html'),
-      // filename: 'index.html'
-      title: 'webpack'
+      template: path.join(__dirname, '../javascripts/index/index.html'),
+      filename: 'index.html'
     }),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor'],

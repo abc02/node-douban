@@ -1,3 +1,6 @@
+import './index.scss'
+import TopicMerge from './mod/TopicMerge'
 
-
-console.log('他说你会刷新？ koa2 ces')
+$(function () {
+    TopicMerge.load()
+})
