@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "open": "opn http://localhost:3000",
+    "dev": "npm-run-all -p  dev_server dev_src open",
+    "dev_server": "nodemon --harmony ./app.js",
+    "dev_src": "webpack --watch --config ./src/build/webpack.dev.config.js",
+    "start_src": "webpack --config ./src/build/webpack.prod.config.js",
+    "start_server": "node ./app.js",
+    "start": "npm-run-all -s  start_src start_server"
   },
   "keywords": [],
   "author": "me <abcgg02@gmail.com>",
@@ -12,8 +18,26 @@
   "dependencies": {
     "axios": "^0.16.2",
     "cheerio": "^1.0.0-rc.2",
+    "jquery": "^3.2.1",
     "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-convert": "^1.2.0",
+    "koa-router": "^7.2.1",
+    "koa-static": "^4.0.1",
     "mongodb": "^2.2.31",
     "mongoose": "^4.4.8"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "css-loader": "^0.28.7",
+    "html-webpack-plugin": "^2.30.1",
+    "nodemon": "^1.12.1",
+    "npm-run-all": "^4.1.1",
+    "opn-cli": "^3.1.0",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.7.1",
+    "webpack-dev-server": "^2.9.1",
+    "webpack-merge": "^4.1.0"
   }
 }
