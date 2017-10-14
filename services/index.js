@@ -37,8 +37,8 @@ async function fetchSingleDouban(pages) {
  * 
  */
 
-async function fetchTopicMongDB() {
-    return await Topic.find().then(r => r)
+async function fetchTopicMongDB(pages, items) {
+   return  await Topic.find().skip(pages * items).limit(items).then(r => r)
 }
 
 

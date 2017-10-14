@@ -13,8 +13,16 @@ const router = new Router()
 app.use(bodyParser())     // 解析body
 app.use(static('./APP'))  //设置静态资源
 
-router.get('/getlists', async (ctx, next) => {
-  let results = await fetchTopicMongDB()
+router.get('/getitems', async (ctx, next) => {
+  let { pages,items} = ctx.query
+  if (!items) {
+    return ctx.body = '没有获取数据items参数'
+  }
+
+  //初始数值 初始值
+  items = parseInt(items)
+  pages = parseInt(pages)
+  let results = await fetchTopicMongDB(pages, items)
   ctx.body = results
 
 })
@@ -22,7 +30,7 @@ router.get('/getlists', async (ctx, next) => {
 
 
 app.use(router.routes())
-.use(router.allowedMethods())
+  .use(router.allowedMethods())
 
 
 // error

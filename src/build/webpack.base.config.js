@@ -7,7 +7,7 @@ const outputPath = path.join(__dirname, './../../APP');
 module.exports = {
 
   entry: {
-    'index': path.join(__dirname, '../javascripts/index/index.js'),
+    'app': path.join(__dirname, '../javascripts/app/index.js'),
     vendor: ['jquery'],
   },
   output: {
@@ -41,17 +41,29 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader','sass-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
 
     ]
   },
   resolve: {
-    extensions: ['.js'],
+    // 使用的扩展名
+    extensions: [".js", ".jsx", ".css", ".scss"], 
+    // 用于查找模块的目录
     modules: [
       sourcePath,
       'node_modules'
-    ]
+    ],
+    alias: {
+      // 模块别名列表
+      "src": path.join(__dirname, '../'),
+
+      "javascripts": "sr/javascripts",
+
+      "module": "src/javascripts/module",
+
+      "app": "src/javascripts/app"
+    },
   },
   plugins: [
     new webpack.ProvidePlugin({
@@ -59,7 +71,7 @@ module.exports = {
       jQuery: 'jquery',
     }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, '../javascripts/index/index.html'),
+      template: path.join(__dirname, '../javascripts/app/index.html'),
       filename: 'index.html'
     }),
     new webpack.optimize.CommonsChunkPlugin({
