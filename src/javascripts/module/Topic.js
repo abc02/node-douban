@@ -12,7 +12,7 @@ class Topic {
         <h2 class="topic-title ellipsis">
             <a href="${data.url}">${data.title}</a>
         </h2>
-        <p class="topic-details details">${data.details}</p>
+        <p class="topic-details details">${data.details ? data.details : ''}</p>
         </div>`)
     }
     static init(data, insertNode) {

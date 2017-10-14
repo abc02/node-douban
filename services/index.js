@@ -35,13 +35,12 @@ async function fetchSingleDouban(pages) {
 // })
 
 async function fetchTopicDouban(items) {
-    let results = []
-    let topic = await crawler.fetchSingleDoubanList(items)
-    for (let j = 0; j < topic.length; j++) {
-        let topicContent = await crawler.fetchSingleDoubanTopic(topic[j])
-        console.log(topicContent)
-        results.push(topicContent)
-    }
+    let results = await crawler.fetchSingleDoubanList(items)
+    // for (let j = 0; j < topic.length;) {
+    //     let topicContent = await crawler.fetchSingleDoubanTopic(topic[j])
+    //     console.log(topicContent)
+    //     results.push(topicContent)
+    // }
     console.log('results: ', results.length)
     return results
 
