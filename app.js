@@ -3,7 +3,7 @@ const bodyParser = require('koa-bodyparser')
 const static = require('koa-static')
 const Router = require('koa-router')
 const Topic = require('./models/topic.js')
-const { fetchSingleDouban, fetchTopicMongDB } = require('./services/index.js')
+const { fetchSingleDouban, fetchTopicMongDB, fetchTopicDouban } = require('./services/index.js')
 
 const app = new Koa()
 const router = new Router()
@@ -25,6 +25,16 @@ router.get('/getitems', async (ctx, next) => {
   let results = await fetchTopicMongDB(pages, items)
   ctx.body = results
 
+})
+router.get('/getdouban', async (ctx) =>{
+  let { items } = ctx.query
+  if (!items) {
+    return ctx.body = '没有获取数据items参数'
+  }
+console.log(items);
+  let results = await fetchTopicDouban(items)
+  console.log('getdouban', results.length);
+  ctx.body = results
 })
 
 

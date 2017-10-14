@@ -33,16 +33,30 @@ async function fetchSingleDouban(pages) {
 //     console.log(error)
 //     process.exit(1)
 // })
+
+async function fetchTopicDouban(items) {
+    let results = []
+    let topic = await crawler.fetchSingleDoubanList(items)
+    for (let j = 0; j < topic.length; j++) {
+        let topicContent = await crawler.fetchSingleDoubanTopic(topic[j])
+        console.log(topicContent)
+        results.push(topicContent)
+    }
+    console.log('results: ', results.length)
+    return results
+
+}
+
 /**
  * 
  */
-
 async function fetchTopicMongDB(pages, items) {
-   return  await Topic.find().skip(pages * items).limit(items).then(r => r)
+    return await Topic.find().skip(pages * items).limit(items).then(r => r)
 }
 
 
 module.exports = {
     fetchSingleDouban,
     fetchTopicMongDB,
+    fetchTopicDouban,
 }
