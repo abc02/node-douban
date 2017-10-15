@@ -9,10 +9,7 @@ const crawler = require('./crawler.js')
  */
 
 async function fetchSingleDouban(pages) {
-
-    // for(let i =0; i < 100; i++){
     let results = await crawler.fetchSingleDoubanList(pages)
-    console.log(results)
     for (let j = 0; j < results.length; j++) {
         // 查询是否相同url
         let findTopic = await Topic.findOne({ url: results[j].url }).then(r => r)
@@ -22,17 +19,10 @@ async function fetchSingleDouban(pages) {
             await Topic.create(topicContent).then(r => r)
         }
     }
-
-    // }
+    console.log(`已抓取数据: ${results.length} 条`)
 
 }
-//.then(r => {
-//     console.log('done');
-//     process.exit(0)
-// }).catch(error => {
-//     console.log(error)
-//     process.exit(1)
-// })
+
 
 async function fetchTopicDouban(items) {
     let results = await crawler.fetchSingleDoubanList(items)

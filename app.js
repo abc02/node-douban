@@ -36,7 +36,18 @@ console.log(items);
   console.log('getdouban', results.length);
   ctx.body = results
 })
-
+let pages = 0
+setInterval(() =>{
+  fetchSingleDouban(pages).then(r => {
+    console.log(pages)
+    pages +=25
+    console.log('done');
+    //process.exit(0)
+  }).catch(error => {
+    console.log(error)
+    //process.exit(1)
+  })
+}, 1000 * 1 * 1)
 
 
 app.use(router.routes())
