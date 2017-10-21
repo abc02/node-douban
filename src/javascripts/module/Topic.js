@@ -23,7 +23,7 @@ class Topic {
         this.$node = $(`
         <div class="topic-container box bottom-insert">
         <h2 class="topic-title ellipsis">
-            <a href="${data.url}">${data.title}</a>
+            <a href="${data.url}" target="_blank">${data.title}</a>
         </h2>
         <p class="topic-details details">${data.details ? data.details : ''}</p>
         </div>`)
