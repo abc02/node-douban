@@ -1,6 +1,6 @@
-require('./mongo.js')
+require('../services/mongo.js')
 const Topic = require('../models/topic.js')
-const crawler = require('./crawler.js')
+const crawler = require('../services/crawler.js')
 
 /**
  * 
@@ -24,7 +24,7 @@ async function fetchSingleDouban(pages) {
 }
 
 
-async function fetchTopicDouban(items) {
+async function fetchOnlineData(items) {
     let results = await crawler.fetchSingleDoubanList(items)
     // for (let j = 0; j < topic.length;) {
     //     let topicContent = await crawler.fetchSingleDoubanTopic(topic[j])
@@ -36,10 +36,7 @@ async function fetchTopicDouban(items) {
 
 }
 
-/**
- * 
- */
-async function fetchTopicMongDB(pages, items) {
+async function fetchDataBase(pages, items) {
     return await Topic.find().skip(pages * items).limit(items).then(r => r)
 }
 
