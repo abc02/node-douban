@@ -1,7 +1,7 @@
-export function FetchItems(pages, items) {
-    return Promise.resolve($.ajax(`/getitems?pages=${pages}&items=${items}`))
+export function FetchDataBase(pages, items) {
+    return Promise.resolve($.ajax(`/api/topic/getDataBase.json?pages=${pages}&items=${items}`))
 }
-export function FetchDouban(items) {
+export function FetchOnlineData(items) {
     return Promise.resolve($.ajax(`/getdouban?items=${items}`))
 }
 

@@ -42,7 +42,6 @@ async function fetchDataBase(pages, items) {
 
 
 module.exports = {
-    fetchSingleDouban,
-    fetchTopicMongDB,
-    fetchTopicDouban,
+    fetchOnlineData,
+    fetchDataBase,
 }

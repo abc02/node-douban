@@ -5,15 +5,15 @@ const routers = require('./server/routers/index')
 
 const app = new Koa()
 
+
 app.use(bodyParser())     // 解析body
 app.use(static('./APP'))  //设置静态资源
 app.use(routers.routes()).use(routers.allowedMethods()) // 初始化路由中间件
 
-
-
 // error
 app.on('error', err => {
-  log.error('server error', err)
+  console.log('logging error ', err.message);
+  console.log(err);
 });
 
 
