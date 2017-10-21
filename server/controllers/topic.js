@@ -22,8 +22,7 @@ async function getOnlineData(ctx) {
   }
 
   items = parseInt(items)
-  let results = await fetchTopicDouban(items)
-  console.log('getdouban', results.length);
+  let results = await fetchOnlineData(items)
   ctx.body = results
 }
 
@@ -31,8 +30,13 @@ async function autoSwitch(ctx){
 
 }
 
+async function geFilterDataBase(ctx){
+
+}
+
 module.exports = {
   getDataBase,
   getOnlineData,
-  autoSwitch
+  autoSwitch,
+  geFilterDataBase
 }

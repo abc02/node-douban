@@ -17,11 +17,9 @@ async function fetchSingleDouban(pages) {
             // 获取租房信息，图片 ， 并插入数据库
             let topicContent = await crawler.fetchSingleDoubanTopic(results[j])
             await Topic.create(topicContent)
-            results[j] = topicContent
         }
     }
-    console.log(`已抓取数据: ${results.length} 条`)
-    return results
+  
 
 }
 
@@ -29,11 +27,16 @@ async function fetchSingleDouban(pages) {
 async function fetchOnlineData(items) {
     // 100 / 25
     let pages = parseInt((items > 25 ? items : 25) / 25),
-        results = []
-    for(let i=0; i < pages; i++){
-        let topic = await fetchSingleDouban(pages * 25)
-        results.push(...topic)
+        results
+    for (let i = 0; i < pages; i++) {
+        results = await crawler.fetchSingleDoubanList(pages *25)
+        for (let j = 0; j < results.length; j++) {
+            let topicContent = await crawler.fetchSingleDoubanTopic(results[j])
+            results[j] = topicContent
+        }
     }
+    console.log(`已抓取数据: ${results.length} 条`)
+    console.log('results: ', results)
     return results
 
 }
