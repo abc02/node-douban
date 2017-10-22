@@ -12,7 +12,7 @@ module.exports = {
   },
   output: {
     path: outputPath,
-    publicPath: '/crawler/',
+    publicPath: '/',
     filename: 'javascripts/[name].js',
   },
   devServer: {
