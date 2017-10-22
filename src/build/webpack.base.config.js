@@ -71,7 +71,7 @@ module.exports = {
       jQuery: 'jquery',
     }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, '../javascripts/app/index.html'),
+      template: path.join(__dirname, '../javascripts/index/index.html'),
       filename: 'index.html'
     }),
     new webpack.optimize.CommonsChunkPlugin({
