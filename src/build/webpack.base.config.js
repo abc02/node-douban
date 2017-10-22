@@ -7,7 +7,7 @@ const outputPath = path.join(__dirname, './../../APP');
 module.exports = {
 
   entry: {
-    'app': path.join(__dirname, '../javascripts/app/index.js'),
+    'app': path.join(__dirname, '../javascripts/index/index.js'),
     vendor: ['jquery'],
   },
   output: {
@@ -62,7 +62,7 @@ module.exports = {
 
       "module": "src/javascripts/module",
 
-      "app": "src/javascripts/app"
+      "app": "src/javascripts/index"
     },
   },
   plugins: [
