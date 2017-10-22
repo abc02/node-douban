@@ -2,7 +2,7 @@ import './index.scss'
 import EventCenter from 'module/EventCenter'
 import TopicMerge from 'module/TopicMerge'
 import Visibility from 'module/Visibility'
-import { FetchDataBase, FetchOnlineData } from 'module/fetch'
+import { FetchDataBase, FetchOnlineData } from 'module/Fetch'
 
 $(function () {
     const TOPIC_DOM = $('.topic-wrapper')
