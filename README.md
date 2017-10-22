@@ -8,6 +8,6 @@ git clone git@github.com:abc02/node-douban.git
 
 cd node-douban && npm install
 
-npm start
+npm run dev
 
 ```
